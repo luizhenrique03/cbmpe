@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
-import { User } from './users/user/user'; // <- importar a entidade
+import { OccurrencesModule } from './occurrences/occurrences.module';
 
 @Module({
   imports: [
@@ -12,10 +12,12 @@ import { User } from './users/user/user'; // <- importar a entidade
       username: 'cbmpe_user',
       password: 'Cbmp3@2025',
       database: 'cbmpe_db',
-      entities: [User], // <- usar a entidade diretamente
+      autoLoadEntities: true, // <- deixa o Nest carregar todas as entities automaticamente
       synchronize: true,
     }),
+
     UsersModule,
+    OccurrencesModule, // <- IMPORTANTE!
   ],
 })
 export class AppModule {}
