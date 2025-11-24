@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class CreateOccurrenceDto {
   @IsString()
@@ -15,5 +15,13 @@ export class CreateOccurrenceDto {
 
   @IsNumber()
   @IsNotEmpty()
-  userId: number; // só o ID do usuário
+  userId: number;
+
+  @IsString()
+  @IsOptional() // torna opcional se o front não enviar
+  prioridade?: string;
+
+  @IsString()
+  @IsOptional()
+  status?: string;
 }

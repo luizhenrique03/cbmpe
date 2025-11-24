@@ -13,6 +13,9 @@ async function bootstrap(): Promise<void> {
     }),
   );
 
+  // Prefixo global para todas as rotas
+  app.setGlobalPrefix('api');
+
   await app.listen(process.env.PORT ?? 3000);
 }
 
